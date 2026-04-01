@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "cd dist && git init && git add . && git commit -m 'deploy' && git push -f https://github.com/cherraki20/my-ecommerce.git master:gh-pages"
   },
   "dependencies": {
     "d3-format": "^3.1.0",
