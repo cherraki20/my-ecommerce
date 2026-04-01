@@ -355,16 +355,39 @@ export default function Hero() {
                           background: `linear-gradient(to bottom, ${card.color}15 0%, transparent 40%, rgba(8,20,40,0.95) 100%)`,
                         }}
                       />
-                      {/* Product Image */}
+                      {/* Product Image with "Lens" effect */}
                       <div className="relative z-20 w-full h-full flex items-center justify-center p-8">
+                        {/* 1. Brand Halo Glow */}
+                        <div
+                          className="absolute w-32 h-32 rounded-full blur-[35px] opacity-25"
+                          style={{
+                            background: `radial-gradient(circle, ${card.color}, transparent 70%)`,
+                            transform: isActive ? "scale(1.4)" : "scale(1)",
+                            transition: "all 0.8s ease-out",
+                          }}
+                        />
+                        
+                        {/* 2. Glassmorphism backdrop circle */}
+                        <div
+                          className="absolute w-40 h-40 rounded-full border border-white/5 backdrop-blur-[2px] bg-white/5 shadow-inner"
+                          style={{
+                            transform: isActive ? "scale(1.15)" : "scale(1)",
+                            opacity: isActive ? 1 : 0.3,
+                            transition: "all 0.8s ease-out",
+                          }}
+                        />
+
+                        {/* 3. The Product itself */}
                         <img
                           src={card.image}
                           alt=""
-                          className="max-h-full max-w-full object-contain"
+                          className="relative max-h-full max-w-full object-contain"
                           style={{
                             filter: isActive
-                              ? `drop-shadow(0 12px 32px ${card.color}66)`
-                              : "drop-shadow(0 4px 12px rgba(0,0,0,0.6)) grayscale(0.2)",
+                              ? `drop-shadow(0 15px 35px rgba(0,0,0,0.6)) drop-shadow(0 0 15px ${card.color}33)`
+                              : "drop-shadow(0 6px 15px rgba(0,0,0,0.5)) grayscale(0.2)",
+                            transform: isActive ? "translateY(-10px) scale(1.05)" : "none",
+                            transition: "all 0.8s ease-out",
                           }}
                           draggable={false}
                         />
