@@ -74,7 +74,7 @@ function PartnerBrandsMarquee() {
         {/* Fading edges for marquee */}
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#081428] to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#081428] to-transparent z-10" />
-        
+
         <div className="animate-brand-scroll flex w-max items-center gap-12 sm:gap-16 lg:gap-20">
           {doubled.map((brand, i) => (
             <BrandLogo key={`${brand.id}-${i}`} brand={brand} />
@@ -89,8 +89,8 @@ function PageCta() {
   return (
     <section className="relative py-20 overflow-hidden bg-[#0B1F3A]">
       <div className="absolute inset-0">
-         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(29,111,242,0.1)_0%,transparent_100%)]" />
-         <div className="absolute top-0 right-0 w-96 h-96 bg-[#00AEEF]/10 rounded-full blur-[80px] translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(29,111,242,0.1)_0%,transparent_100%)]" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#00AEEF]/10 rounded-full blur-[80px] translate-x-1/3 -translate-y-1/3" />
       </div>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md p-10 sm:p-14 overflow-hidden relative">
@@ -137,7 +137,7 @@ export default function About() {
           <div className="absolute -top-40 -left-20 w-96 h-96 bg-[#1D6FF2]/10 rounded-full blur-[100px]" />
           <div className="absolute top-0 right-10 w-80 h-80 bg-[#00AEEF]/15 rounded-full blur-[100px]" />
         </div>
-        
+
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <p className="inline-block text-[#00AEEF] text-sm font-bold uppercase tracking-[0.2em] mb-4 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full backdrop-blur-md">
             Depuis 1986
@@ -181,11 +181,11 @@ export default function About() {
       <section className="relative py-32 overflow-hidden bg-[#0B1F3A] mt-20">
         {/* Slanted Background Map */}
         <div className="absolute inset-0 z-0">
-          <div 
+          <div
             className="absolute inset-0 bg-gradient-to-br from-slate-600/60 to-slate-800/60"
             style={{ clipPath: 'polygon(0 0, 70% 0, 30% 100%, 0 100%)' }}
           />
-           <div 
+          <div
             className="absolute inset-0 bg-gradient-to-br from-[#0076B6]/60 to-[#0B1F3A]"
             style={{ clipPath: 'polygon(70% 0, 100% 0, 100% 100%, 30% 100%)' }}
           />
@@ -194,7 +194,7 @@ export default function About() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-left mb-32 max-w-lg">
             <h2 className="text-4xl sm:text-5xl font-black text-white uppercase tracking-wider leading-tight" style={{ fontFamily: "'Syne', sans-serif", textShadow: "0 4px 10px rgba(0,0,0,0.5)" }}>
-              Historique <br/>
+              Historique <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-400 font-light">Milestones</span>
             </h2>
           </div>
@@ -218,7 +218,7 @@ export default function About() {
             <div className="min-w-[800px]">
               {/* The Line */}
               <div className="absolute top-[89px] left-0 right-0 h-[2px] bg-white" />
-              
+
               <div className="grid grid-cols-5 gap-4 relative">
                 {milestones.map((milestone, i) => {
                   const Icon = iconMap[milestone.icon];
@@ -241,7 +241,7 @@ export default function About() {
 
                       {/* Decorative Icon floating bottom */}
                       <div className="mt-14 flex justify-center opacity-60 group-hover:opacity-100 transition-opacity duration-300 group-hover:-translate-y-2 transform">
-                         <Icon className="w-10 h-10 stroke-1 text-white opacity-40 group-hover:stroke-2 group-hover:text-[#00AEEF] group-hover:opacity-100 transition-all drop-shadow-md" />
+                        <Icon className="w-10 h-10 stroke-1 text-white opacity-40 group-hover:stroke-2 group-hover:text-[#00AEEF] group-hover:opacity-100 transition-all drop-shadow-md" />
                       </div>
                     </div>
                   );
@@ -252,28 +252,25 @@ export default function About() {
 
           {/* Slogan Text Bottom Right */}
           <div className="mt-10 flex justify-end">
-             <div className="text-right max-w-xl text-white">
-                <p className="text-xs leading-relaxed mb-6 font-medium text-white/90 drop-shadow-md" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.8)" }}>
-                  SFIB vous offre des solutions de qualité pour vous aider à minimiser les risques. Que cela soit grâce au contrôle d'accès ou à la protection antivol, tous vos sites, même les plus vastes, seront munis de systèmes de sécurité élégants et performants.
-                </p>
-                <div className="border-t border-white/20 pt-4 text-right">
-                  <div className="mb-2">
-                    <p className="text-xs font-bold tracking-widest uppercase">Leader sur le marché</p>
-                    <p className="text-[10px] tracking-widest text-[#00AEEF]/80 uppercase mt-0.5">Leader on the market and innovator</p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold tracking-widest uppercase">Savoir Faire et Compétence</p>
-                    <p className="text-[10px] tracking-widest text-[#00AEEF]/80 uppercase mt-0.5">Knowhow and proficiency</p>
-                  </div>
+            <div className="text-right max-w-xl text-white">
+              <p className="text-xs leading-relaxed mb-6 font-medium text-white/90 drop-shadow-md" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.8)" }}>
+                SFIB vous offre des solutions de qualité pour vous aider à minimiser les risques. Que cela soit grâce au contrôle d'accès ou à la protection antivol, tous vos sites, même les plus vastes, seront munis de systèmes de sécurité élégants et performants.
+              </p>
+              <div className="border-t border-white/20 pt-4 text-right">
+                <div className="mb-2">
+                  <p className="text-xs font-bold tracking-widest uppercase">Leader sur le marché</p>
+                  <p className="text-[10px] tracking-widest text-[#00AEEF]/80 uppercase mt-0.5">Leader on the market and innovator</p>
                 </div>
-             </div>
+                <div>
+                  <p className="text-xs font-bold tracking-widest uppercase">Savoir Faire et Compétence</p>
+                  <p className="text-[10px] tracking-widest text-[#00AEEF]/80 uppercase mt-0.5">Knowhow and proficiency</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <PartnerBrandsMarquee />
-
-      <PartnerBrandsMarquee />
 
       {/* Global Reach / Map Section */}
       <section className="relative py-24 pb-32 overflow-hidden bg-[#0A1A31]">
@@ -282,93 +279,93 @@ export default function About() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[radial-gradient(circle_at_center,rgba(0,174,239,0.1),transparent_60%)] rounded-full blur-3xl z-0 pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          
+
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto mb-16 relative z-20">
             <h2 className="text-[#00AEEF] text-sm font-bold tracking-[0.3em] uppercase mb-4 opacity-80">Présence Internationale</h2>
             <h3 className="font-heading text-4xl font-light text-white uppercase tracking-wide leading-tight" style={{ fontFamily: "'Syne', sans-serif" }}>
-              Notre Réseau <br/>
+              Notre Réseau <br />
               <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00AEEF]">Au-Delà des Frontières</span>
             </h3>
           </div>
 
           {/* 3D Global-to-Local Map Visual (Zoomed In) */}
           <div className="relative w-full max-w-7xl mx-auto h-[500px] lg:h-[700px] rounded-3xl overflow-visible group/map -mt-4">
-             
-             {/* 1. Base Layer: Global Map (100%) */}
-             <div 
-               className="absolute inset-0 z-0 opacity-10" 
-               style={{ 
-                 backgroundImage: 'url("/images/world-map.svg")', 
-                 backgroundSize: '100%', 
-                 backgroundPosition: 'center', 
-                 backgroundRepeat: 'no-repeat',
-                 filter: 'invert(1)' 
-               }} 
-             />
 
-             {/* 2. Radial focal glow */}
-             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,174,239,0.08)_0%,transparent_70%)] z-0" />
+            {/* 1. Base Layer: Global Map (100%) */}
+            <div
+              className="absolute inset-0 z-0 opacity-10"
+              style={{
+                backgroundImage: `url("images/world-map.svg")`,
+                backgroundSize: '100%',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                filter: 'invert(1)'
+              }}
+            />
 
-             {/* 3. The "LIFTED" Morocco Layer (Enlarged) */}
-             <div className="absolute top-[50%] left-[50%] w-[50%] md:w-[45%] lg:w-[38%] -translate-x-1/2 -translate-y-1/2 z-10 transition-all duration-700 hover:scale-105">
-                {/* 3D Shadow layer (The "Hza" effect) */}
-                <div className="absolute inset-0 translate-x-4 translate-y-8 opacity-40 blur-xl pointer-events-none"
-                  style={{
-                    backgroundImage: 'url("/images/morocco-map-full.svg")',
-                    backgroundSize: '100% 100%',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center',
-                    filter: 'brightness(0) blur(4px)'
-                  }}
-                />
-                
-                {/* The main map silhouette */}
-                <div className="relative w-full aspect-square animate-[cardFloat_4s_ease-in-out_infinite]"
-                  style={{
-                    backgroundImage: 'url("/images/morocco-map-full.svg")',
-                    backgroundSize: '100% 100%',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center',
-                    filter: 'drop-shadow(0 0 25px rgba(0,174,239,0.4))'
-                  }}>
-                  
-                  {/* Glowing City Nodes + Labels on the lifted map */}
-                  {[
-                    { name: 'TANGER', t: '5%', l: '55%', d: '0s' },
-                    { name: 'RABAT', t: '16%', l: '49%', d: '1s' },
-                    { name: 'FÈS', t: '16%', l: '60%', d: '1.2s' },
-                    { name: 'CASA', t: '22%', l: '42%', d: '0.5s' },
-                    { name: 'MARRAKECH', t: '32%', l: '35%', d: '1.5s' },
-                    { name: 'AGADIR', t: '43%', l: '24%', d: '2s' },
-                  ].map((node) => (
-                    <div key={node.name} 
-                         className="absolute flex items-center gap-2 -translate-x-1/2 -translate-y-1/2"
-                         style={{ top: node.t, left: node.l }}>
-                      {/* Node point */}
-                      <div className="relative w-2 h-2 bg-[#00AEEF] rounded-full shadow-[0_0_8px_white] ring-2 ring-white">
-                        <div className="absolute inset-0 bg-[#00AEEF] rounded-full animate-ping opacity-75" style={{ animationDelay: node.d }} />
-                      </div>
-                      {/* Node Label */}
-                      <span className="text-xs md:text-sm font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] tracking-widest uppercase ml-1">
-                        {node.name}
-                      </span>
+            {/* 2. Radial focal glow */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,174,239,0.08)_0%,transparent_70%)] z-0" />
+
+            {/* 3. The "LIFTED" Morocco Layer (Enlarged) */}
+            <div className="absolute top-[50%] left-[50%] w-[50%] md:w-[45%] lg:w-[38%] -translate-x-1/2 -translate-y-1/2 z-10 transition-all duration-700 hover:scale-105">
+              {/* 3D Shadow layer (The "Hza" effect) */}
+              <div className="absolute inset-0 translate-x-4 translate-y-8 opacity-40 blur-xl pointer-events-none"
+                style={{
+                  backgroundImage: `url("images/morocco-map-full.svg")`,
+                  backgroundSize: '100% 100%',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center',
+                  filter: 'brightness(0) blur(4px)'
+                }}
+              />
+
+              {/* The main map silhouette */}
+              <div className="relative w-full aspect-square animate-[cardFloat_4s_ease-in-out_infinite]"
+                style={{
+                  backgroundImage: `url("images/morocco-map-full.svg")`,
+                  backgroundSize: '100% 100%',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center',
+                  filter: 'drop-shadow(0 0 25px rgba(0,174,239,0.4))'
+                }}>
+
+                {/* Glowing City Nodes + Labels on the lifted map */}
+                {[
+                  { name: 'TANGER', t: '5%', l: '55%', d: '0s' },
+                  { name: 'RABAT', t: '16%', l: '49%', d: '1s' },
+                  { name: 'FÈS', t: '16%', l: '60%', d: '1.2s' },
+                  { name: 'CASA', t: '22%', l: '42%', d: '0.5s' },
+                  { name: 'MARRAKECH', t: '32%', l: '35%', d: '1.5s' },
+                  { name: 'AGADIR', t: '43%', l: '24%', d: '2s' },
+                ].map((node) => (
+                  <div key={node.name}
+                    className="absolute flex items-center gap-2 -translate-x-1/2 -translate-y-1/2"
+                    style={{ top: node.t, left: node.l }}>
+                    {/* Node point */}
+                    <div className="relative w-2 h-2 bg-[#00AEEF] rounded-full shadow-[0_0_8px_white] ring-2 ring-white">
+                      <div className="absolute inset-0 bg-[#00AEEF] rounded-full animate-ping opacity-75" style={{ animationDelay: node.d }} />
                     </div>
-                  ))}
-                </div>
+                    {/* Node Label */}
+                    <span className="text-xs md:text-sm font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] tracking-widest uppercase ml-1">
+                      {node.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
 
-                {/* Main Label MAROC / MOROCCO */}
-                <div className="absolute -bottom-16 left-0 text-left">
-                  <h4 className="text-5xl md:text-7xl font-black tracking-widest text-[#00AEEF] drop-shadow-lg leading-none" style={{ fontFamily: "'Syne', sans-serif" }}>MAROC</h4>
-                  <p className="text-xl md:text-3xl font-light tracking-[0.3em] text-white/50 uppercase mt-2">Morocco</p>
-                </div>
-             </div>
+              {/* Main Label MAROC / MOROCCO */}
+              <div className="absolute -bottom-16 left-0 text-left">
+                <h4 className="text-5xl md:text-7xl font-black tracking-widest text-[#00AEEF] drop-shadow-lg leading-none" style={{ fontFamily: "'Syne', sans-serif" }}>MAROC</h4>
+                <p className="text-xl md:text-3xl font-light tracking-[0.3em] text-white/50 uppercase mt-2">Morocco</p>
+              </div>
+            </div>
 
-             {/* 4. Connectivity Nodes in the rest of the world (Faded) */}
-             <div className="absolute inset-0 z-5 pointer-events-none opacity-40">
-                <div className="absolute top-[58%] left-[40.5%] w-2 h-2 rounded-full bg-[#1D6FF2] shadow-[0_0_10px_#1D6FF2]" /> {/* West Africa */}
-                <div className="absolute top-[30%] left-[52%] w-2 h-2 rounded-full bg-[#1D6FF2] shadow-[0_0_10px_#1D6FF2]" /> {/* Europe */}
-             </div>
+            {/* 4. Connectivity Nodes in the rest of the world (Faded) */}
+            <div className="absolute inset-0 z-5 pointer-events-none opacity-40">
+              <div className="absolute top-[58%] left-[40.5%] w-2 h-2 rounded-full bg-[#1D6FF2] shadow-[0_0_10px_#1D6FF2]" /> {/* West Africa */}
+              <div className="absolute top-[30%] left-[52%] w-2 h-2 rounded-full bg-[#1D6FF2] shadow-[0_0_10px_#1D6FF2]" /> {/* Europe */}
+            </div>
           </div>
         </div>
       </section>

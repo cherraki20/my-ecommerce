@@ -55,7 +55,7 @@ export default function ProductDetail() {
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
           <div className="overflow-hidden rounded-xl bg-white shadow-md">
             <img
-              src={product.image}
+              src={`${import.meta.env.BASE_URL}${product.image}`}
               alt=""
               className="aspect-square w-full object-cover sm:aspect-[4/3] lg:aspect-auto lg:min-h-[480px]"
             />

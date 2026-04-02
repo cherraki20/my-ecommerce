@@ -39,7 +39,7 @@ function ClientCard({ client }) {
       
       {hasLogo ? (
         <img
-          src={client.logo}
+          src={`${import.meta.env.BASE_URL}${client.logo}`}
           alt={client.name}
           className="relative z-10 h-14 w-auto max-w-[85%] object-contain
                      transition-all duration-500 group-hover:scale-110"
@@ -82,7 +82,7 @@ export default function References() {
       {/* HERO */}
       <div className="relative h-[380px] overflow-hidden">
         <img
-          src="https://www.sfib.ma/templates/beez_20/img/slider/slider_1.jpg"
+          src="images/q6.png"
           alt="SFIB"
           className="w-full h-full object-cover object-center"
         />
@@ -196,7 +196,7 @@ export default function References() {
                              transition-all duration-300">
                   {client?.logo ? (
                     <img
-                      src={client.logo}
+                      src={`${import.meta.env.BASE_URL}${client.logo}`}
                       alt={name}
                       className="h-10 w-auto max-w-full object-contain
                                  transition-all duration-300 group-hover:scale-110"

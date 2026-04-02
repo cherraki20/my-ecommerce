@@ -16,30 +16,42 @@ export default function CategoryCards() {
   return (
     <section className="bg-[#F8F9FA] py-16">
       <div className="mx-auto max-w-7xl px-8">
+
+        {/* HEADER */}
         <div className="relative mb-10 flex items-center justify-center">
-          <h2 className="font-heading text-3xl font-bold text-[#1A1A2E] sm:text-4xl">
+          <h2
+            className="text-3xl font-bold text-[#1A1A2E] sm:text-4xl"
+            style={{ fontFamily: "'Syne', sans-serif" }}
+          >
             Nos Produits
           </h2>
           <div className="absolute right-0 top-1/2 flex -translate-y-1/2 items-center gap-3">
             <button
               type="button"
               onClick={() => scrollByOne(-1)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-[#1A1A2E] transition-all duration-300 ease-in-out hover:bg-[#1D6FF2] hover:text-white"
-              aria-label="Previous categories"
+              className="flex h-10 w-10 items-center justify-center rounded-full
+                         border border-gray-200 bg-white text-[#1A1A2E]
+                         transition-all duration-300 hover:bg-[#1D6FF2]
+                         hover:text-white hover:border-[#1D6FF2]"
+              aria-label="Previous"
             >
-              <ChevronLeft className="h-5 w-5 transition-colors duration-300 ease-in-out" />
+              <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               type="button"
               onClick={() => scrollByOne(1)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-[#1A1A2E] transition-all duration-300 ease-in-out hover:bg-[#1D6FF2] hover:text-white"
-              aria-label="Next categories"
+              className="flex h-10 w-10 items-center justify-center rounded-full
+                         border border-gray-200 bg-white text-[#1A1A2E]
+                         transition-all duration-300 hover:bg-[#1D6FF2]
+                         hover:text-white hover:border-[#1D6FF2]"
+              aria-label="Next"
             >
-              <ChevronRight className="h-5 w-5 transition-colors duration-300 ease-in-out" />
+              <ChevronRight className="h-5 w-5" />
             </button>
           </div>
         </div>
 
+        {/* CARDS SCROLL */}
         <div
           ref={scrollRef}
           className="flex gap-5 overflow-x-auto pb-6 scroll-smooth snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
@@ -52,40 +64,59 @@ export default function CategoryCards() {
               onClick={() =>
                 navigate(`/products?category=${encodeURIComponent(cat.slug)}`)
               }
-              className="group flex h-[300px] min-w-[240px] w-[240px] snap-start flex-col overflow-hidden rounded-2xl border border-[#F0F0F0] bg-white shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-1 border-b-2 border-transparent group-hover:border-b-[#1D6FF2]"
+              className="group flex h-[300px] min-w-[240px] w-[240px] snap-start
+                         flex-col overflow-hidden rounded-2xl border border-[#F0F0F0]
+                         bg-white shadow-sm transition-all duration-300
+                         hover:-translate-y-1 hover:shadow-md
+                         hover:border-b-2 hover:border-b-[#1D6FF2]"
             >
-              <div className="h-[120px] w-full p-4 pb-2">
+              {/* TOP — category name */}
+              <div className="p-4 pb-2 text-left">
                 <h3 className="text-base font-bold leading-snug text-[#1A1A2E]">
                   {cat.name}
                 </h3>
+                {cat.count && (
+                  <span className="text-xs text-gray-400 mt-1 block">
+                    {cat.count} produits
+                  </span>
+                )}
               </div>
 
-              <div className="flex h-[180px] flex-1 items-center justify-center p-4">
+              {/* BOTTOM — image */}
+              <div className="flex flex-1 items-center justify-center p-4 relative overflow-hidden">
+
+                {/* Background subtle image */}
+                {cat.bgImage && (
+                  <img
+                    src={cat.bgImage}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-cover
+                               opacity-10 scale-105 blur-[1px]
+                               transition-transform duration-500 group-hover:scale-110"
+                  />
+                )}
+
+                {/* Main product image */}
                 {cat.image ? (
                   <img
                     src={cat.image}
                     alt={cat.name}
+                    className="relative z-10 h-full w-full max-h-[160px] object-contain
+                               drop-shadow-md transition-transform duration-300
+                               group-hover:scale-105"
                     onError={(e) => {
-                      const img = e.currentTarget;
-                      img.classList.add("hidden");
-                      const fallback = img.parentElement?.querySelector(
-                        '[data-fallback="1"]'
-                      );
-                      if (fallback) fallback.classList.remove("hidden");
+                      e.currentTarget.style.display = "none";
                     }}
-                    className="h-full w-full max-h-[160px] object-contain transition-transform duration-300 group-hover:scale-105"
                   />
-                ) : null}
-                <span
-                  data-fallback="1"
-                  className={
-                    cat.image
-                      ? "hidden w-full text-center font-heading text-sm font-bold text-[#1A1A2E]/70"
-                      : "w-full text-center font-heading text-sm font-bold text-[#1A1A2E]/70"
-                  }
-                >
-                  {cat.name}
-                </span>
+                ) : (
+                  <div className="w-16 h-16 rounded-full bg-[#1D6FF2]/10
+                                  flex items-center justify-center">
+                    <span className="text-[#1D6FF2] font-black text-xl">
+                      {cat.name.charAt(0)}
+                    </span>
+                  </div>
+                )}
               </div>
             </button>
           ))}

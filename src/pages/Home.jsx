@@ -11,7 +11,7 @@ const solutions = [
     icon: ShieldAlert,
     color: "bg-blue-600",
     title: "Protection & Antivol",
-    image: "/images/Protection & Antivol.jpg",
+    image: "images/Protection & Antivol.jpg",
     desc: "Systèmes EAS Sensormatic, tags, étiquettes et portiques antivols pour la grande distribution et le retail.",
     items: ["Portiques EAS", "Tags & Étiquettes", "Détacheurs"],
     link: "/products?category=eas-sensormatic",
@@ -20,7 +20,7 @@ const solutions = [
     icon: Camera,
     color: "bg-indigo-600",
     title: "Surveillance & Détection",
-    image: "/images/Surveillance & Détection.png",
+    image: "images/Surveillance & Détection.png",
     desc: "Vidéosurveillance HD, anti-intrusion et détection incendie pour sécuriser vos locaux 24h/24.",
     items: ["Caméras IP HD", "Alarmes anti-intrusion", "Détection incendie"],
     link: "/products?category=video-surveillance",
@@ -29,7 +29,7 @@ const solutions = [
     icon: Lock,
     color: "bg-cyan-600",
     title: "Contrôle & Gestion",
-    image: "/images/Contrôle & Gestion.png",
+    image: "images/Contrôle & Gestion.png",
     desc: "Contrôle d'accès Kantech, sonorisation ITC et comptage de passage pour optimiser votre espace.",
     items: ["Contrôle d'accès", "Sonorisation", "Compteur de passage"],
     link: "/products?category=controle-d-acces",
@@ -105,8 +105,7 @@ export default function Home() {
                   {/* TOP — image + icon + title */}
                   <div className="relative h-48 overflow-hidden bg-gray-900">
                     <img
-                      src={s.image}
-                      alt={s.title}
+                      src={`${import.meta.env.BASE_URL}${s.image}`}
                       className="absolute inset-0 w-full h-full object-cover
                                  opacity-100 group-hover:scale-105
                                  transition-all duration-500"
@@ -155,7 +154,7 @@ export default function Home() {
             {/* IMAGE */}
             <div className="relative w-full lg:w-[55%] min-h-[280px] lg:min-h-[480px] overflow-hidden group">
               <img
-                src={service.image}
+                src={`${import.meta.env.BASE_URL}${service.image}`}
                 alt={service.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />

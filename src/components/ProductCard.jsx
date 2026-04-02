@@ -9,9 +9,7 @@ function Rating({ value }) {
       {Array.from({ length: 5 }, (_, i) => (
         <Star
           key={i}
-          className={`h-4 w-4 ${
-            i < rounded ? "fill-amber-400 text-amber-400" : "fill-transparent text-ink/25"
-          }`}
+          className={`h-4 w-4 ${i < rounded ? "fill-amber-400 text-amber-400" : "fill-transparent text-ink/25"}`}
           strokeWidth={i < rounded ? 0 : 1.5}
         />
       ))}
@@ -19,40 +17,87 @@ function Rating({ value }) {
   );
 }
 
+const getBrandColor = (brand) => {
+  const b = brand?.toLowerCase() || "";
+  if (b.includes("sensormatic")) return "#2a9d8f";
+  if (b.includes("kantech")) return "#1D6FF2";
+  if (b.includes("itc")) return "#e9c46a";
+  if (b.includes("american dynamics")) return "#457b9d";
+  if (b.includes("aguilera")) return "#f4a261";
+  if (b.includes("dsc") || b.includes("intrusion")) return "#6b7280";
+  return "#0B1F3A";
+};
+
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
+  const brandColor = getBrandColor(product.brand);
+  const productUrl = product.url || "#";
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl">
-      <Link to={`/products/${product.id}`} className="block overflow-hidden">
-        <img
-          src={product.image}
-          alt=""
-          className="aspect-[4/3] w-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
-        />
+    <article className="flex h-full flex-col overflow-hidden rounded-xl bg-white border border-gray-100 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+
+      <Link to={`/products/${product.id}`} className="block">
+
+        <div style={{ background: brandColor }} className="py-2 text-center">
+          <span className="text-[10px] font-bold text-white uppercase tracking-wider">
+            {product.brand}
+          </span>
+        </div>
+
+        <div className="h-36 flex items-center justify-center bg-gray-50 p-4">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="max-h-[120px] max-w-full object-contain transition-transform duration-500 hover:scale-110"
+            draggable={false}
+          />
+        </div>
+
       </Link>
-      <div className="flex flex-1 flex-col p-5">
-        <p className="text-xs font-medium uppercase tracking-wide text-ink/50">
-          {product.brand}
-        </p>
+
+      <div className="flex flex-1 flex-col p-5 text-center">
+
         <Link to={`/products/${product.id}`}>
-          <h3 className="mt-1 font-heading text-lg font-bold text-ink transition-colors duration-300 ease-in-out hover:text-accent">
+          <h3 className="line-clamp-2 min-h-[3rem] text-sm font-extrabold uppercase text-[#1A1A2E] hover:text-accent transition">
             {product.name}
           </h3>
         </Link>
-        <div className="mt-3">
+
+        <p className="mt-1 text-xs text-gray-400 font-semibold">
+          {product.brand}
+        </p>
+
+        <div className="mt-3 flex justify-center">
           <Rating value={product.rating} />
         </div>
-        <p className="mt-4 font-heading text-xl font-bold text-accent">
-          ${product.price.toLocaleString()}
-        </p>
-        <button
-          type="button"
-          onClick={() => addToCart(product)}
-          className="mt-auto w-full rounded-full bg-accent py-3 text-sm font-semibold text-white transition-all duration-300 ease-in-out hover:bg-accent/90 hover:shadow-md"
-        >
-          Add to Cart
-        </button>
+
+        <div className="mt-4 flex items-center justify-between border-t pt-4">
+
+          {product.price === 0 ? (
+            <span className="text-sm font-bold text-accent">Sur devis</span>
+          ) : (
+            <span className="text-lg font-black text-accent">
+              ${product.price.toLocaleString()}
+            </span>
+          )}
+
+          {product.price === 0 ? (
+            <a href={productUrl} target="_blank" rel="noopener noreferrer" className="bg-accent text-white text-xs font-bold px-4 py-2 rounded-full hover:scale-105 transition">
+              Devis
+            </a>
+          ) : (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                addToCart(product);
+              }}
+              className="bg-accent text-white text-xs font-bold px-4 py-2 rounded-full hover:scale-105 transition"
+            >
+              Ajouter
+            </button>
+          )}
+
+        </div>
       </div>
     </article>
   );

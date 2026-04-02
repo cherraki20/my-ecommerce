@@ -1,119 +1,55 @@
 import { useCallback, useMemo } from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import { Star } from "lucide-react";
-import { useCart } from "../hooks/useCart.js";
+import { useSearchParams } from "react-router-dom";
 import { products } from "../data/products.js";
+import ProductCard from "../components/ProductCard.jsx";
+
+const CAT_PRIORITY = {
+  "anti-intrusion": 1,
+  "controle-d-acces": 2,
+  "eas-sensormatic": 3,
+  "sonorisation": 4,
+  "video-surveillance": 5,
+  "detection-incendie": 6,
+};
 
 const categoryOptions = [
-  { value: "", label: "All categories" },
-  { value: "surveillance", label: "Surveillance" },
-  { value: "alarm", label: "Alarm Systems" },
-  { value: "access", label: "Access Control" },
+  { value: "", label: "Toutes les catégories" },
+  { value: "anti-intrusion", label: "Anti-Intrusion" },
+  { value: "controle-d-acces", label: "Contrôle d'Accès" },
+  { value: "eas-sensormatic", label: "EAS Sensormatic" },
+  { value: "sonorisation", label: "Sonorisation" },
+  { value: "video-surveillance", label: "Vidéosurveillance" },
+  { value: "detection-incendie", label: "Incendie" },
 ];
 
 const brandOptions = [
-  { value: "", label: "All brands" },
+  { value: "", label: "Toutes les marques" },
   ...Array.from(new Set(products.map((p) => p.brand)))
     .sort()
     .map((b) => ({ value: b, label: b })),
 ];
 
 const priceOptions = [
-  { value: "", label: "Any price" },
-  { value: "0-199", label: "Under $200" },
-  { value: "200-500", label: "$200 – $500" },
-  { value: "501-", label: "Over $500" },
+  { value: "", label: "Tout prix" },
+  { value: "0-0", label: "Sur devis" },
+  { value: "0-500", label: "Moins de 500$" },
+  { value: "500-2000", label: "500$ – 2000$" },
+  { value: "2001-", label: "Plus de 2000$" },
 ];
 
 const sortOptions = [
-  { value: "rating", label: "Rating" },
-  { value: "price-asc", label: "Price: Low to High" },
-  { value: "price-desc", label: "Price: High to Low" },
+  { value: "rating", label: "Évaluation" },
+  { value: "price-asc", label: "Prix: Croissant" },
+  { value: "price-desc", label: "Prix: Décroissant" },
 ];
 
 function matchesPriceRange(price, range) {
   if (!range) return true;
-  if (range === "0-199") return price < 200;
-  if (range === "200-500") return price >= 200 && price <= 500;
-  if (range === "501-") return price > 500;
-  return true;
-}
-
-function Rating({ value }) {
-  const rounded = Math.round(value);
-
-  return (
-    <div className="flex items-center gap-0.5" aria-label={`${value} out of 5 stars`}>
-      {Array.from({ length: 5 }, (_, i) => (
-        <Star
-          key={i}
-          className={`h-4 w-4 ${
-            i < rounded
-              ? "fill-amber-400 text-amber-400"
-              : "fill-transparent text-ink/25"
-          }`}
-          strokeWidth={i < rounded ? 0 : 1.5}
-        />
-      ))}
-    </div>
-  );
-}
-
-function ProductCardStyled({ product }) {
-  const { addToCart } = useCart();
-
-  return (
-    <article className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-md">
-      <Link to={`/products/${product.id}`} className="block overflow-hidden">
-        <img
-          src={product.image}
-          alt=""
-          className="aspect-[4/3] w-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
-        />
-      </Link>
-
-      <div className="flex flex-1 flex-col p-5">
-        <p className="text-xs text-gray-400 uppercase tracking-wide">
-          {product.brand}
-        </p>
-
-        <Link to={`/products/${product.id}`}>
-          <h3 className="mt-1 font-heading text-base font-bold text-[#1A1A2E] transition-colors duration-300 ease-in-out hover:text-[#1D6FF2]">
-            {product.name}
-          </h3>
-        </Link>
-
-        <div className="mt-3">
-          <Rating value={product.rating} />
-        </div>
-
-        {product.price === 0 ? (
-          <span className="mt-4 text-[#1D6FF2] font-bold text-sm">Sur devis</span>
-        ) : (
-          <p className="mt-4 font-heading text-base font-bold text-[#1D6FF2]">
-            ${product.price.toLocaleString()}
-          </p>
-        )}
-
-        {product.price === 0 ? (
-          <button
-            type="button"
-            className="mt-auto bg-[#1D6FF2] text-white text-xs px-3 py-1.5 rounded-full hover:bg-[#1558d6] transition duration-200"
-          >
-            Demander un devis
-          </button>
-        ) : (
-          <button
-            type="button"
-            onClick={() => addToCart(product)}
-            className="mt-auto w-full rounded-full bg-[#1D6FF2] px-4 py-2 text-sm font-semibold text-white transition duration-200 hover:bg-[#1558d6]"
-          >
-            Add to Cart
-          </button>
-        )}
-      </div>
-    </article>
-  );
+  if (range === "0-0") return price === 0;
+  
+  const [min, max] = range.split("-").map(Number);
+  if (isNaN(max)) return price >= min;
+  return price >= min && price <= max;
 }
 
 export default function Products() {
@@ -150,6 +86,12 @@ export default function Products() {
     });
 
     list = [...list].sort((a, b) => {
+      // 1. Sort by category priority from Hero
+      const aP = CAT_PRIORITY[a.category] ?? 99;
+      const bP = CAT_PRIORITY[b.category] ?? 99;
+      if (aP !== bP) return aP - bP;
+
+      // 2. Sort by user choice
       if (sort === "price-asc") return a.price - b.price;
       if (sort === "price-desc") return b.price - a.price;
       return b.rating - a.rating;
@@ -275,7 +217,7 @@ export default function Products() {
             ) : (
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {filtered.map((product) => (
-                  <ProductCardStyled key={product.id} product={product} />
+                  <ProductCard key={product.id} product={product} />
                 ))}
               </div>
             )}

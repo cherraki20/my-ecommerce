@@ -4,48 +4,56 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const cards = [
   {
+    id: 1,
+    brand: "DSC Security",
+    category: "Anti-Intrusion",
+    image: "produit/anti-intrusion.png",
+    color: "#6b7280",
+  },
+  {
     id: 2,
     brand: "Tyco / Kantech",
     category: "Contrôle d'Accès",
-    image: "/images/q1.png",
-    bgImage: "/images/bg_kantech.png",
+    image: "produit/acces.png",
     color: "#1D6FF2",
   },
   {
     id: 3,
     brand: "Sensormatic",
     category: "Systèmes EAS",
-    image: "/images/q2.png",
-    bgImage: "/images/bg_sensormatic.png",
+    image: "produit/eas.png",
     color: "#2a9d8f",
   },
   {
     id: 4,
     brand: "ITC Audio",
     category: "Sonorisation",
-    image: "/images/q3.png",
-    bgImage: "/images/bg_itc.png",
+    image: "produit/sonorisation.png",
     color: "#e9c46a",
   },
   {
     id: 5,
     brand: "American Dynamics",
     category: "Vidéo Surveillance",
-    image: "/images/q4.png",
-    bgImage: "/images/bg_american_dynamics.png",
+    image: "produit/surveillance.png",
     color: "#457b9d",
   },
   {
     id: 6,
     brand: "Aguilera",
     category: "Détection Incendie",
-    image: "/images/q5.png",
-    bgImage: "/images/bg_aguilera.png",
+    image: "produit/incendie.png",
     color: "#f4a261",
   },
 ];
 
 const slides = [
+  {
+    label: "SFIB SECURITY",
+    title: "Anti-Intrusion",
+    subtitle: "Systèmes DSC pour votre protection 24h/24",
+    cta: "Découvrir",
+  },
   {
     label: "SFIB SECURITY",
     title: "Contrôle d'Accès",
@@ -93,17 +101,18 @@ export default function Hero() {
 
   const getCardStyle = (offset, color) => {
     const absOffset = Math.abs(offset);
-
-    if (absOffset > 2) return { display: "none" };
-
     const isCenter = offset === 0;
-    const scale = isCenter ? 1.05 : Math.max(0.55, 0.78 - absOffset * 0.12);
-    const zIndex = isCenter ? 20 : 10 - absOffset;
-    const opacity = isCenter ? 1 : Math.max(0.35, 0.65 - absOffset * 0.15);
+
+    // Use display: none only for the very back card to avoid popping
+    if (absOffset > 2.5) return { opacity: 0, pointerEvents: "none", zIndex: 0 };
+
+    const zIndex = isCenter ? 40 : 20 - Math.floor(absOffset * 2);
+    const scale = isCenter ? 1 : Math.max(0.6, 0.82 - absOffset * 0.12);
+    const opacity = isCenter ? 1 : Math.max(0, 0.85 - absOffset * 0.2);
 
     const transform = `
-      translateX(${offset * 200}px)
-      translateZ(${-absOffset * 180}px)
+      translateX(${offset * 240}px)
+      translateZ(${-absOffset * 200}px)
       rotateY(${offset * -35}deg)
       scale(${scale})
     `;
@@ -112,11 +121,15 @@ export default function Hero() {
       transform,
       zIndex,
       opacity,
-      filter: isCenter ? "none" : `blur(${absOffset * 1.5}px) brightness(0.6)`,
+      filter: isCenter ? "none" : `brightness(0.65)`,
       boxShadow: isCenter
-        ? `0 40px 80px rgba(0,0,0,0.35), 0 0 60px ${color}30, 0 0 120px ${color}15`
+        ? `0 40px 80px rgba(0,0,0,0.35), 0 0 60px ${color}30`
         : `0 20px 40px rgba(0,0,0,0.25)`,
-      transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+      transition: "all 0.8s cubic-bezier(0.25, 1, 0.2, 1)",
+      pointerEvents: isCenter ? "auto" : "none",
+      backfaceVisibility: "hidden",
+      WebkitFontSmoothing: "antialiased",
+      transformStyle: "preserve-3d",
     };
   };
 
@@ -142,13 +155,16 @@ export default function Hero() {
 
   const activeSlide = slidesSafe[safeActive] ?? slidesSafe[0];
 
+  const cardWidth = typeof window !== 'undefined' && window.innerWidth < 768 ? 180 : 260;
+  const cardHeight = typeof window !== 'undefined' && window.innerWidth < 768 ? 240 : 340;
+
   return (
     <section className="relative min-h-[100svh] md:min-h-screen bg-[#0B1F3A] overflow-hidden flex items-center pt-20 md:pt-0">
       {/* Background — multi-layer premium */}
       <div className="absolute inset-0">
         {/* Base image */}
         <img
-          src="/images/q6.png"
+          src="images/q6.png"
           className="w-full h-full object-cover object-center"
           alt=""
         />
@@ -230,11 +246,10 @@ export default function Hero() {
             {slidesSafe.map((s, i) => (
               <div
                 key={s.title}
-                className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-                  i === safeActive
-                    ? "opacity-100"
-                    : "opacity-0 pointer-events-none"
-                }`}
+                className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${i === safeActive
+                  ? "opacity-100"
+                  : "opacity-0 pointer-events-none"
+                  }`}
               >
                 <p className="hidden md:block text-[#1D6FF2] text-sm font-semibold uppercase tracking-widest mb-4">
                   SFIB SECURITY
@@ -274,11 +289,10 @@ export default function Hero() {
                     key={i}
                     type="button"
                     onClick={() => setActiveIndex(i)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      active
-                        ? "w-8 bg-[#1D6FF2]"
-                        : "w-2 bg-white/30 hover:bg-white/50"
-                    }`}
+                    className={`h-2 rounded-full transition-all duration-300 ${active
+                      ? "w-8 bg-[#1D6FF2]"
+                      : "w-2 bg-white/30 hover:bg-white/50"
+                      }`}
                     aria-label={`Select slide ${i + 1}`}
                   />
                 );
@@ -307,155 +321,94 @@ export default function Hero() {
               className="h-full"
             >
               {cards.map((card, index) => {
-                const offset = index - safeActive;
+                let offset = index - safeActive;
+                if (offset > Math.floor(cards.length / 2)) offset -= cards.length;
+                if (offset < -Math.floor(cards.length / 2)) offset += cards.length;
                 const isActive = offset === 0;
 
                 return (
                   <button
-                    key={card.id}
+                    key={card.id || index}
                     type="button"
                     onClick={() => setActiveIndex(index)}
-                    className="absolute left-1/2 top-0 -ml-[150px] select-none cursor-pointer p-0"
+                    className="absolute left-1/2 top-0 select-none cursor-pointer p-0"
                     style={{
-                      width: 300,
-                      height: 400,
-                      borderRadius: 24,
-                      overflow: "hidden",
-                      border: isActive
-                        ? `1.5px solid ${card.color}99`
-                        : "1px solid rgba(255,255,255,0.08)",
-                      background: "rgba(8,20,40,0.75)",
-                      backdropFilter: "blur(16px)",
-                      WebkitBackdropFilter: "blur(16px)",
-                      boxShadow: isActive
-                        ? `0 0 0 1px ${card.color}22, 0 30px 80px rgba(0,0,0,0.5), 0 0 50px ${card.color}25`
-                        : "0 20px 50px rgba(0,0,0,0.35)",
-                      ...(isActive
-                        ? { animation: "cardFloat 3s ease-in-out infinite" }
-                        : {}),
+                      marginLeft: -(cardWidth / 2),
+                      width: cardWidth,
+                      height: cardHeight,
                       ...getCardStyle(offset, card.color),
+                      background: 'white',
+                      borderRadius: '16px',
+                      overflow: 'hidden',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      border: '1px solid rgba(0,0,0,0.08)',
+                      boxShadow: isActive
+                        ? '0 40px 80px rgba(0,0,0,0.5), 0 0 40px rgba(29,111,242,0.1)'
+                        : '0 20px 40px rgba(0,0,0,0.4)',
                     }}
                     aria-label={`Show ${card.category}`}
                   >
-                    {/* Full image top section */}
-                    <div
-                      className="relative w-full overflow-hidden"
-                      style={{ height: 250 }}
-                    >
-                      {/* Brand-specific background image */}
-                      <img
-                        src={card.bgImage}
-                        alt=""
-                        className="absolute inset-0 w-full h-full object-cover opacity-60"
-                      />
-                      {/* Gradient overlay on image */}
-                      <div
-                        className="absolute inset-0 z-10"
-                        style={{
-                          background: `linear-gradient(to bottom, ${card.color}15 0%, transparent 40%, rgba(8,20,40,0.95) 100%)`,
-                        }}
-                      />
-                      {/* Product Image with "Lens" effect */}
-                      <div className="relative z-20 w-full h-full flex items-center justify-center p-8">
-                        {/* 1. Brand Halo Glow */}
-                        <div
-                          className="absolute w-32 h-32 rounded-full blur-[35px] opacity-25"
-                          style={{
-                            background: `radial-gradient(circle, ${card.color}, transparent 70%)`,
-                            transform: isActive ? "scale(1.4)" : "scale(1)",
-                            transition: "all 0.8s ease-out",
-                          }}
-                        />
-                        
-                        {/* 2. Glassmorphism backdrop circle */}
-                        <div
-                          className="absolute w-40 h-40 rounded-full border border-white/5 backdrop-blur-[2px] bg-white/5 shadow-inner"
-                          style={{
-                            transform: isActive ? "scale(1.15)" : "scale(1)",
-                            opacity: isActive ? 1 : 0.3,
-                            transition: "all 0.8s ease-out",
-                          }}
-                        />
+                    {/* 1. TOP COLOR BAR */}
+                    <div style={{
+                      background: card.color,
+                      padding: '10px 16px',
+                      textAlign: 'center'
+                    }}>
+                      <span style={{
+                        fontSize: '11px',
+                        fontWeight: '700',
+                        color: 'white',
+                        letterSpacing: '0.12em',
+                        textTransform: 'uppercase'
+                      }}>
+                        {card.brand}
+                      </span>
+                    </div>
 
-                        {/* 3. The Product itself */}
-                        <img
-                          src={card.image}
-                          alt=""
-                          className="relative max-h-full max-w-full object-contain"
-                          style={{
-                            filter: isActive
-                              ? `drop-shadow(0 15px 35px rgba(0,0,0,0.6)) drop-shadow(0 0 15px ${card.color}33)`
-                              : "drop-shadow(0 6px 15px rgba(0,0,0,0.5)) grayscale(0.2)",
-                            transform: isActive ? "translateY(-10px) scale(1.05)" : "none",
-                            transition: "all 0.8s ease-out",
-                          }}
-                          draggable={false}
-                        />
-                      </div>
-                      {/* Brand color top stripe */}
-                      <div
-                        className="absolute top-0 left-0 right-0 h-[3px] z-20"
+                    {/* 2. IMAGE AREA */}
+                    <div style={{
+                      flex: 1,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '16px',
+                      background: '#f8f9fa'
+                    }}>
+                      <img
+                        src={`${import.meta.env.BASE_URL}${card.image}`}
+                        alt={card.category}
                         style={{
-                          background: `linear-gradient(90deg, transparent, ${card.color}, transparent)`,
+                          maxWidth: '90%',
+                          maxHeight: '160px',
+                          objectFit: 'contain'
                         }}
                       />
                     </div>
 
-                    {/* Info panel */}
-                    <div
-                      className="relative flex flex-col items-start justify-center px-6 py-5"
-                      style={{ height: 150 }}
-                    >
-                      {/* Left colored accent line */}
-                      <div
-                        className="absolute left-0 top-4 bottom-4 w-[3px] rounded-r-full"
-                        style={{ background: card.color }}
-                      />
-                      {/* Category */}
-                      <div
-                        className="text-white text-[14px] font-extrabold uppercase tracking-widest leading-tight"
-                        style={{ fontFamily: "'Syne', sans-serif" }}
-                      >
+                    {/* 3. BOTTOM TEXT */}
+                    <div style={{
+                      padding: '12px 16px',
+                      textAlign: 'center',
+                      background: 'white'
+                    }}>
+                      <div style={{
+                        fontSize: '12px',
+                        fontWeight: '800',
+                        color: '#1A1A2E',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em',
+                        marginBottom: '2px'
+                      }}>
                         {card.category}
                       </div>
-                      {/* Brand */}
-                      <div
-                        className="mt-2 text-[13px] font-semibold tracking-wide"
-                        style={{ color: card.color }}
-                      >
+                      <div style={{
+                        fontSize: '11px',
+                        color: '#6b7280'
+                      }}>
                         {card.brand}
                       </div>
-                      {/* Bottom tag */}
-                      {isActive && (
-                        <div
-                          className="mt-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-widest"
-                          style={{
-                            background: `${card.color}18`,
-                            border: `1px solid ${card.color}44`,
-                            color: card.color,
-                          }}
-                        >
-                          <span
-                            className="w-1.5 h-1.5 rounded-full"
-                            style={{ background: card.color }}
-                          />
-                          Solution active
-                        </div>
-                      )}
                     </div>
-
-                    {/* Pulsing glow halo */}
-                    {isActive && (
-                      <div
-                        className="absolute -bottom-3 left-1/2 -translate-x-1/2 h-10 w-4/5 rounded-full"
-                        style={{
-                          background: card.color,
-                          opacity: 0.18,
-                          filter: "blur(20px)",
-                          animation: "glowPulse 2s ease-in-out infinite",
-                        }}
-                      />
-                    )}
                   </button>
                 );
               })}

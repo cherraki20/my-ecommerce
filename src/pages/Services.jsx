@@ -38,7 +38,7 @@ function ServiceRow({ service, reversed }) {
       {/* IMAGE SIDE — 55% */}
       <div className="relative w-full lg:w-[55%] min-h-[300px] lg:min-h-[500px] overflow-hidden group">
         <img
-          src={service.image}
+          src={`${import.meta.env.BASE_URL}${service.image}`}
           alt={service.title}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 
                      group-hover:scale-105"
@@ -99,7 +99,7 @@ export default function ServicesPage() {
       {/* HERO */}
       <div className="relative h-[420px] overflow-hidden">
         <img
-          src="https://www.sfib.ma/templates/beez_20/img/slider/slider_2.jpg"
+          src="images/q6.png"
           alt="SFIB - Nos Solutions"
           className="w-full h-full object-cover object-center"
         />

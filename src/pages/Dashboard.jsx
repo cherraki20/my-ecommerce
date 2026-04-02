@@ -128,7 +128,7 @@ const INITIAL_PRODUCTS = [
   {
     id: "p1",
     image:
-      "https://www.sfib.ma/cache/com_zoo/images/Camera_09ecab4047e0848775656b1e4c9684b2.jpg",
+      "images/q6.png",
     name: "Caméra IP Dome 4MP",
     category: "Vidéo Surveillance",
     brand: "American Dynamics",
@@ -138,7 +138,7 @@ const INITIAL_PRODUCTS = [
   {
     id: "p2",
     image:
-      "https://www.sfib.ma/cache/com_zoo/images/eas_155e9397b94c9aa73cbd89adc19ca8b8.png",
+      "images/q6.png",
     name: "Antenne EAS RF Pro",
     category: "EAS / Systèmes Antivols",
     brand: "Sensormatic",
@@ -148,7 +148,7 @@ const INITIAL_PRODUCTS = [
   {
     id: "p3",
     image:
-      "https://www.sfib.ma/cache/com_zoo/images/DSC_14a3b3d1529447d3fd5b2956606ecd0e.png",
+      "images/q6.png",
     name: "Centrale intrusion PowerSeries",
     category: "Anti-Intrusion",
     brand: "DSC",
@@ -158,7 +158,7 @@ const INITIAL_PRODUCTS = [
   {
     id: "p4",
     image:
-      "https://www.sfib.ma/cache/com_zoo/images/detection_incendie_e062052ab6e08d4617c660ee7108a11f.png",
+      "images/q6.png",
     name: "Détecteur optique fumée",
     category: "Détection Incendie",
     brand: "Aguilera",
@@ -168,7 +168,7 @@ const INITIAL_PRODUCTS = [
   {
     id: "p5",
     image:
-      "https://www.sfib.ma/cache/com_zoo/images/portiques_132b1c3446f2f4180fb9f923abf613b2.png",
+      "images/q6.png",
     name: "Portique antivol mono",
     category: "Portiques",
     brand: "Sensormatic",
@@ -178,7 +178,7 @@ const INITIAL_PRODUCTS = [
   {
     id: "p6",
     image:
-      "https://www.sfib.ma/cache/com_zoo/images/itc_66ecad348e2f9bf66b170298ea1b6d2c.png",
+      "images/q6.png",
     name: "Amplificateur mural 120W",
     category: "Sonorisation",
     brand: "Aguilera",
@@ -188,7 +188,7 @@ const INITIAL_PRODUCTS = [
   {
     id: "p7",
     image:
-      "https://www.sfib.ma/cache/com_zoo/images/Compteur de passage_97b4ecddc482beb4352989775e1a210b.jpg",
+      "images/q6.png",
     name: "Compteur people counting 3D",
     category: "Compteur de Passage",
     brand: "Sensormatic",
@@ -198,7 +198,7 @@ const INITIAL_PRODUCTS = [
   {
     id: "p8",
     image:
-      "https://www.sfib.ma/templates/beez_20/img/logo_four/logo_kantech.png",
+      "images/q6.png",
     name: "Pack contrôle d'accès 2 portes",
     category: "Contrôle d'Accès",
     brand: "Kantech",
@@ -208,7 +208,7 @@ const INITIAL_PRODUCTS = [
   {
     id: "p9",
     image:
-      "https://www.sfib.ma/templates/beez_20/img/logo_four/logo_invue.png",
+      "images/q6.png",
     name: "Support merchandising série One",
     category: "EAS / Systèmes Antivols",
     brand: "InVue",
@@ -218,7 +218,7 @@ const INITIAL_PRODUCTS = [
   {
     id: "p10",
     image:
-      "https://www.sfib.ma/cache/com_zoo/images/portiques_132b1c3446f2f4180fb9f923abf613b2.png",
+      "images/q6.png",
     name: "Détacheur super magnétique",
     category: "Détacheurs & Désactiveurs",
     brand: "Sensormatic",
@@ -228,7 +228,7 @@ const INITIAL_PRODUCTS = [
   {
     id: "p11",
     image:
-      "https://www.sfib.ma/cache/com_zoo/images/eas_155e9397b94c9aa73cbd89adc19ca8b8.png",
+      "images/q6.png",
     name: "Étiquettes RF 40×40",
     category: "Tags & Étiquettes",
     brand: "Sensormatic",
@@ -238,7 +238,7 @@ const INITIAL_PRODUCTS = [
   {
     id: "p12",
     image:
-      "https://www.sfib.ma/cache/com_zoo/images/Camera_09ecab4047e0848775656b1e4c9684b2.jpg",
+      "images/q6.png",
     name: "Bullet IP 8MP Starlight",
     category: "Vidéo Surveillance",
     brand: "American Dynamics",
@@ -404,7 +404,7 @@ export default function Dashboard() {
           stock,
           image:
             productForm.image.trim() ||
-            "https://www.sfib.ma/cache/com_zoo/images/Camera_09ecab4047e0848775656b1e4c9684b2.jpg",
+            "images/q6.png",
         },
       ]);
     }

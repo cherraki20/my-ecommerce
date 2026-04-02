@@ -5,10 +5,8 @@ export const categories = [
     slug: "eas-sensormatic",
     count: 19,
     icon: "ShieldAlert",
-    image:
-      "https://www.sfib.ma/cache/com_zoo/images/eas_155e9397b94c9aa73cbd89adc19ca8b8.png",
-    description:
-      "Antennes, portiques et systèmes de protection antivol Sensormatic",
+    image: "produit/eas.png",
+    description: "Antennes, portiques et systèmes de protection antivol Sensormatic",
   },
   {
     id: 2,
@@ -16,8 +14,7 @@ export const categories = [
     slug: "video-surveillance",
     count: 20,
     icon: "Camera",
-    image:
-      "https://www.sfib.ma/cache/com_zoo/images/Camera_09ecab4047e0848775656b1e4c9684b2.jpg",
+    image: "produit/surveillance.png",
     description: "Caméras IP, dômes et systèmes de vidéosurveillance",
   },
   {
@@ -26,8 +23,7 @@ export const categories = [
     slug: "anti-intrusion",
     count: 20,
     icon: "ShieldX",
-    image:
-      "https://www.sfib.ma/cache/com_zoo/images/DSC_14a3b3d1529447d3fd5b2956606ecd0e.png",
+    image: "produit/anti-intrusion.png",
     description: "Centrales d'alarme, détecteurs et systèmes DSC",
   },
   {
@@ -36,10 +32,8 @@ export const categories = [
     slug: "detection-incendie",
     count: 24,
     icon: "Flame",
-    image:
-      "https://www.sfib.ma/cache/com_zoo/images/detection_incendie_e062052ab6e08d4617c660ee7108a11f.png",
-    description:
-      "Détecteurs de fumée, centrales incendie et systèmes d'alarme",
+    image: "produit/incendie.png",
+    description: "Détecteurs de fumée, centrales incendie et systèmes d'alarme",
   },
   {
     id: 5,
@@ -47,8 +41,7 @@ export const categories = [
     slug: "controle-d-acces",
     count: 1,
     icon: "Lock",
-    image:
-      "https://www.sfib.ma/cache/com_zoo/images/pack kantech_546654035bd6634f46df02c8d4a83e09.jpg",
+    image: "produit/acces.png",
     description: "Lecteurs de badges, biométrie et systèmes Kantech",
   },
   {
@@ -57,10 +50,8 @@ export const categories = [
     slug: "sonorisation",
     count: 16,
     icon: "Speaker",
-    image:
-      "https://www.sfib.ma/cache/com_zoo/images/itc_66ecad348e2f9bf66b170298ea1b6d2c.png",
-    description:
-      "Systèmes audio, enceintes et amplificateurs professionnels",
+    image: "produit/sonorisation.png",
+    description: "Systèmes audio, enceintes et amplificateurs professionnels",
   },
   {
     id: 7,
@@ -68,10 +59,8 @@ export const categories = [
     slug: "compteur-de-passage",
     count: 8,
     icon: "Users",
-    image:
-      "https://www.sfib.ma/cache/com_zoo/images/Compteur de passage_97b4ecddc482beb4352989775e1a210b.jpg",
-    description:
-      "Compteurs people counting pour retail et grande distribution",
+    image: "produit/compteur.png",
+    description: "Compteurs people counting pour retail et grande distribution",
   },
   {
     id: 8,
@@ -79,9 +68,8 @@ export const categories = [
     slug: "tag-et-ettiquttes",
     count: 8,
     icon: "Tag",
-    image: "https://www.sfib.ma/templates/beez_20/img/prod/cube_3.png",
-    description:
-      "Tags souples, rigides et étiquettes de sécurité Sensormatic",
+    image: "produit/tags.png",
+    description: "Tags souples, rigides et étiquettes de sécurité Sensormatic",
   },
   {
     id: 9,
@@ -89,9 +77,8 @@ export const categories = [
     slug: "detacheurs-et-desactiveurs",
     count: 5,
     icon: "Unlock",
-    image: "https://www.sfib.ma/templates/beez_20/img/prod/cube_2.png",
-    description:
-      "Détacheurs magnétiques et désactiveurs pour points de vente",
+    image: "produit/detacheurs.png",
+    description: "Détacheurs magnétiques et désactiveurs pour points de vente",
   },
   {
     id: 10,
@@ -99,8 +86,7 @@ export const categories = [
     slug: "portique",
     count: 3,
     icon: "ScanLine",
-    image:
-      "https://www.sfib.ma/cache/com_zoo/images/portiques_132b1c3446f2f4180fb9f923abf613b2.png",
+    image: "produit/portiques.png",
     description: "Portiques antivols pour entrées et sorties de magasins",
   },
 ];
