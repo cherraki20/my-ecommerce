@@ -176,7 +176,7 @@ export default function Hero() {
 
       <div className="relative z-10 flex w-full flex-col md:flex-row items-center justify-between">
         <div className="relative z-10 w-full md:w-1/2 px-6 md:px-16 flex flex-col justify-center text-center md:text-left">
-          <div className="relative min-h-[520px]">
+          <div className="relative min-h-[420px] md:min-h-[520px]">
             {slidesSafe.map((s, i) => (
               <div
                 key={s.title}
@@ -189,24 +189,24 @@ export default function Hero() {
                   SFIB SECURITY
                 </p>
                 <h1
-                  className="text-6xl font-black text-white leading-tight mb-4"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4"
                   style={{ fontFamily: "'Syne', sans-serif" }}
                 >
                   {slides[activeIndex].title}
                 </h1>
-                <p className="text-gray-300 text-xl mb-8">
+                <p className="text-gray-300 text-base sm:text-lg md:text-xl mb-6 md:mb-8 px-2 sm:px-0">
                   {slides[activeIndex].subtitle}
                 </p>
-                <div className="flex gap-4 justify-center md:justify-start">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
                   <button
                     type="button"
-                    className="bg-[#1D6FF2] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#1558d6] transition duration-300"
+                    className="bg-[#1D6FF2] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-[#1558d6] transition duration-300 text-sm sm:text-base"
                   >
                     {slides[activeIndex].cta}
                   </button>
                   <button
                     type="button"
-                    className="border border-white/40 text-white px-8 py-3 rounded-full font-semibold hover:border-white transition duration-300"
+                    className="border border-white/40 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold hover:border-white transition duration-300 text-sm sm:text-base"
                   >
                     En savoir plus
                   </button>
@@ -234,13 +234,13 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative z-10 w-full md:w-1/2 flex flex-col items-center mt-10 md:mt-0">
+        <div className="relative z-10 w-full md:w-1/2 flex flex-col items-center mt-6 md:mt-0">
           <div
             style={{
               perspective: "1400px",
               perspectiveOrigin: "center center",
             }}
-            className="relative h-[300px] md:h-[420px] scale-[0.7] md:scale-100 origin-top"
+            className="relative h-[260px] sm:h-[300px] md:h-[420px] scale-[0.6] sm:scale-[0.7] md:scale-100 origin-top"
           >
             <div
               style={{
@@ -346,19 +346,19 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Premium arrows */}
-          <div className="mt-6 flex items-center justify-center gap-5">
+          {/* Premium arrows - smaller on mobile */}
+          <div className="mt-4 md:mt-6 flex items-center justify-center gap-3 md:gap-5">
             <button
               type="button"
               onClick={goPrev}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white transition-all duration-300 ease-out hover:bg-[#1D6FF2] hover:border-[#1D6FF2] hover:scale-110 hover:shadow-[0_0_20px_rgba(29,111,242,0.4)]"
+              className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white transition-all duration-300 ease-out hover:bg-[#1D6FF2] hover:border-[#1D6FF2] hover:scale-110 hover:shadow-[0_0_20px_rgba(29,111,242,0.4)]"
               aria-label="Previous"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
             </button>
 
-            {/* Active brand indicator */}
-            <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+            {/* Active brand indicator - hidden on small mobile */}
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
               <div
                 className="w-2 h-2 rounded-full"
                 style={{
@@ -374,10 +374,10 @@ export default function Hero() {
             <button
               type="button"
               onClick={goNext}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white transition-all duration-300 ease-out hover:bg-[#1D6FF2] hover:border-[#1D6FF2] hover:scale-110 hover:shadow-[0_0_20px_rgba(29,111,242,0.4)]"
+              className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white transition-all duration-300 ease-out hover:bg-[#1D6FF2] hover:border-[#1D6FF2] hover:scale-110 hover:shadow-[0_0_20px_rgba(29,111,242,0.4)]"
               aria-label="Next"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
             </button>
           </div>
         </div>
