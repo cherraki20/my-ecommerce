@@ -95,7 +95,6 @@ export default function Hero() {
   const safeActive = Math.min(Math.max(activeIndex, 0), cards.length - 1);
 
   const slidesSafe = useMemo(() => {
-    // Keep safe bounds if activeIndex ever changes unexpectedly.
     return slides.slice(0, cards.length);
   }, []);
 
@@ -103,7 +102,6 @@ export default function Hero() {
     const absOffset = Math.abs(offset);
     const isCenter = offset === 0;
 
-    // Use display: none only for the very back card to avoid popping
     if (absOffset > 2.5) return { opacity: 0, pointerEvents: "none", zIndex: 0 };
 
     const zIndex = isCenter ? 40 : 20 - Math.floor(absOffset * 2);
@@ -160,87 +158,23 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[100svh] md:min-h-screen bg-[#0B1F3A] overflow-hidden flex items-center pt-20 md:pt-0">
-      {/* Background — multi-layer premium */}
       <div className="absolute inset-0">
-        {/* Base image */}
         <img
-          src="images/q6.png"
+          src="/my-ecommerce/images/q6.png"
           className="w-full h-full object-cover object-center"
           alt=""
         />
-
-        {/* Dark gradient overlay — left to right for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#050d1a] via-[#0B1F3A]/90 to-[#0B1F3A]/60" />
-
-        {/* Diagonal accent gradient */}
         <div
           className="absolute inset-0 opacity-40"
           style={{
             background: "linear-gradient(135deg, rgba(29,111,242,0.25) 0%, transparent 40%, transparent 60%, rgba(0,174,239,0.12) 100%)",
           }}
         />
-
-        {/* Radial spotlight behind the text area */}
-        <div
-          className="absolute top-1/2 left-[20%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-30"
-          style={{
-            background: "radial-gradient(circle, rgba(29,111,242,0.35), transparent 65%)",
-          }}
-        />
-
-        {/* Floating animated orbs */}
-        <div
-          className="absolute w-72 h-72 rounded-full blur-3xl"
-          style={{
-            top: "10%",
-            right: "15%",
-            background: "rgba(29,111,242,0.12)",
-            animation: "heroFloat 8s ease-in-out infinite",
-          }}
-        />
-        <div
-          className="absolute w-56 h-56 rounded-full blur-3xl"
-          style={{
-            bottom: "15%",
-            left: "5%",
-            background: "rgba(0,174,239,0.08)",
-            animation: "heroFloat 10s ease-in-out infinite reverse",
-          }}
-        />
-        <div
-          className="absolute w-40 h-40 rounded-full blur-2xl"
-          style={{
-            top: "60%",
-            right: "35%",
-            background: "rgba(29,111,242,0.06)",
-            animation: "heroFloat 12s ease-in-out infinite 2s",
-          }}
-        />
-
-        {/* Subtle grid pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-
-        {/* Bottom fade for smooth transition */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0B1F3A] to-transparent" />
-
-        {/* Noise texture overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.015] mix-blend-overlay"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          }}
-        />
       </div>
 
       <div className="relative z-10 flex w-full flex-col md:flex-row items-center justify-between">
-        {/* Left: text content */}
         <div className="relative z-10 w-full md:w-1/2 px-6 md:px-16 flex flex-col justify-center text-center md:text-left">
           <div className="relative min-h-[520px]">
             {slidesSafe.map((s, i) => (
@@ -280,7 +214,6 @@ export default function Hero() {
               </div>
             ))}
 
-            {/* Dots (bottom left, synced) */}
             <div className="absolute bottom-4 md:bottom-8 left-0 w-full flex justify-center gap-2">
               {slidesSafe.map((_, i) => {
                 const active = i === safeActive;
@@ -301,7 +234,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: 3D carousel */}
         <div className="relative z-10 w-full md:w-1/2 flex flex-col items-center mt-10 md:mt-0">
           <div
             style={{
@@ -310,7 +242,6 @@ export default function Hero() {
             }}
             className="relative h-[300px] md:h-[420px] scale-[0.7] md:scale-100 origin-top"
           >
-            {/* Cards container */}
             <div
               style={{
                 position: "relative",

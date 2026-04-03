@@ -39,7 +39,7 @@ import {
   LineChart,
   Line,
 } from "recharts";
-import logo from "../assets/logo.svg";
+import logo from "../assets/sfib-logo.png";
 import { categories as categoriesSource } from "../data/categories.js";
 import { brands as brandsSource } from "../data/brands.js";
 import { clients as clientsSource } from "../data/clients.js";
@@ -460,7 +460,7 @@ export default function Dashboard() {
         }`}
       >
         <div className="flex items-center justify-between gap-1 border-b border-white/10 px-4 py-4">
-          <img src={logo} alt="SFIB" className="h-8 w-auto" />
+          <img src={logo} alt="SFIB" className="h-8 w-auto bg-transparent mix-blend-screen" style={{ filter: 'drop-shadow(0 0 0 transparent)' }} />
           <button
             type="button"
             className="rounded-lg p-2 text-white hover:bg-white/10 lg:hidden"
@@ -587,7 +587,7 @@ export default function Dashboard() {
                 {[
                   {
                     label: "Total Produits",
-                    value: 103,
+                    value: 10,
                     icon: Package,
                     tone: "text-accent",
                     bg: "bg-accent/10",

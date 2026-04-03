@@ -13,7 +13,6 @@ import Services from "./pages/Services.jsx";
 import References from "./pages/References.jsx";
 import Cart from "./pages/Cart.jsx";
 import Login from "./pages/Login.jsx";
-import Register from "./pages/Register.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 
 function AppShell({ cartOpen, setCartOpen }) {
@@ -21,7 +20,6 @@ function AppShell({ cartOpen, setCartOpen }) {
   const path = location.pathname;
   const hideStoreChrome =
     path === "/login" ||
-    path === "/register" ||
     path.startsWith("/dashboard");
 
   return (
@@ -40,7 +38,6 @@ function AppShell({ cartOpen, setCartOpen }) {
           <Route path="/references" element={<References />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route
             path="/dashboard"
             element={

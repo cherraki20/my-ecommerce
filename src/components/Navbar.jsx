@@ -123,12 +123,13 @@ export default function Navbar({ onOpenCart }) {
       <div className="bg-[#0B1F3A] h-24 px-8 border-b border-[#1D6FF2]/30 flex items-center relative z-40">
         <div className="max-w-7xl mx-auto flex justify-between items-center w-full">
 
-          {/* LOGO (FIXED 👇) */}
+          {/* LOGO */}
           <Link to="/" className="flex items-center pointer-events-none">
             <img
               src={sfibLogo}
               alt="SFIB"
-              className="h-60 w-auto pointer-events-auto relative z-10"
+              className="h-60 w-auto pointer-events-auto relative z-10 bg-transparent mix-blend-screen"
+              style={{ filter: 'drop-shadow(0 0 0 transparent)' }}
             />
           </Link>
 

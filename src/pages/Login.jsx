@@ -27,20 +27,23 @@ export default function Login() {
     e.preventDefault();
     if (!validate()) return;
 
-    const trimmed = email.trim();
-    const displayName = trimmed.split("@")[0].replace(/\./g, " ");
+    // Vérification admin par défaut
+    const ADMIN_EMAIL = "admin@sfcu.com";
+    const ADMIN_PASSWORD = "admin123";
+
+    if (email.trim() !== ADMIN_EMAIL || password !== ADMIN_PASSWORD) {
+      setErrors({ email: "Email ou mot de passe incorrect." });
+      return;
+    }
+
     setAuthState({
       isLoggedIn: true,
       user: {
-        name: displayName.charAt(0).toUpperCase() + displayName.slice(1),
-        email: trimmed,
+        name: "Administrateur",
+        email: ADMIN_EMAIL,
         role: "Administrateur",
       },
     });
-
-    if (!remember) {
-      /* "Se souvenir" — données déjà en localStorage; option pourrait lier session courte */
-    }
 
     navigate("/dashboard", { replace: true });
   };
@@ -179,22 +182,6 @@ export default function Login() {
               Se connecter
             </button>
           </form>
-
-          <div className="my-8 flex items-center gap-4">
-            <span className="h-px flex-1 bg-ink/10" />
-            <span className="text-xs font-medium text-ink/40">— ou —</span>
-            <span className="h-px flex-1 bg-ink/10" />
-          </div>
-
-          <p className="text-center text-sm text-ink/70">
-            Pas encore de compte?{" "}
-            <Link
-              to="/register"
-              className="font-semibold text-accent transition-colors duration-200 hover:text-primary"
-            >
-              S&apos;inscrire →
-            </Link>
-          </p>
         </div>
       </div>
     </div>
