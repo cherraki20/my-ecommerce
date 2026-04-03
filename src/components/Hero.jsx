@@ -160,7 +160,7 @@ export default function Hero() {
     <section className="relative min-h-[100svh] md:min-h-screen bg-[#0B1F3A] overflow-hidden flex items-center pt-20 md:pt-0">
       <div className="absolute inset-0">
         <img
-          src="/my-ecommerce/images/q6.png"
+          src="/my-ecommerce/images/bg-herov3.jpg"
           className="w-full h-full object-cover object-center"
           alt=""
         />

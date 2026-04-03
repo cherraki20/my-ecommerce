@@ -11,7 +11,7 @@ export default function Footer() {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="images/q6.png"
+          src="images/bg-f.png"
           alt="SFIB Office"
           className="w-full h-full object-cover object-center"
         />
