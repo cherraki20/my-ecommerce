@@ -11,6 +11,7 @@ import {
   Settings,
   ShoppingCart,
   Twitter,
+  X,
 } from "lucide-react";
 import { useCart } from "../hooks/useCart.js";
 import { clearAuthState, getAuthState } from "../utils/authStorage.js";
@@ -65,6 +66,41 @@ export default function Navbar({ onOpenCart }) {
 
   return (
     <nav className="sticky top-0 z-50">
+
+      {/* MOBILE MENU OVERLAY */}
+      {mobileOpen && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          <div className="absolute inset-0 bg-black/70" onClick={() => setMobileOpen(false)} />
+          <aside className="fixed right-0 top-[40px] bottom-0 w-[280px] bg-[#0B1F3A] shadow-2xl flex flex-col border-l border-[#1D6FF2]/30">
+            <div className="flex items-center justify-between p-4 border-b border-[#1D6FF2]/30 h-16">
+              <span className="font-bold text-white text-lg">Menu</span>
+              <button 
+                type="button"
+                onClick={() => setMobileOpen(false)} 
+                className="p-2 text-white bg-[#1D6FF2] rounded-lg hover:bg-[#1558d6] transition"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto py-4">
+              <div className="flex flex-col">
+                <NavLink to="/" onClick={() => setMobileOpen(false)} className="px-4 py-3 text-gray-300 font-medium border-b border-[#1D6FF2]/20 hover:bg-[#1D6FF2]/20 hover:text-white transition">Accueil</NavLink>
+                <NavLink to="/about" onClick={() => setMobileOpen(false)} className="px-4 py-3 text-gray-300 font-medium border-b border-[#1D6FF2]/20 hover:bg-[#1D6FF2]/20 hover:text-white transition">Qui Sommes Nous</NavLink>
+                <NavLink to="/services" onClick={() => setMobileOpen(false)} className="px-4 py-3 text-gray-300 font-medium border-b border-[#1D6FF2]/20 hover:bg-[#1D6FF2]/20 hover:text-white transition">Services</NavLink>
+                <NavLink to="/products" onClick={() => setMobileOpen(false)} className="px-4 py-3 text-gray-300 font-medium border-b border-[#1D6FF2]/20 hover:bg-[#1D6FF2]/20 hover:text-white transition">Produits</NavLink>
+                <NavLink to="/references" onClick={() => setMobileOpen(false)} className="px-4 py-3 text-gray-300 font-medium border-b border-[#1D6FF2]/20 hover:bg-[#1D6FF2]/20 hover:text-white transition">Références</NavLink>
+                <NavLink to="/contact" onClick={() => setMobileOpen(false)} className="px-4 py-3 text-gray-300 font-medium border-b border-[#1D6FF2]/20 hover:bg-[#1D6FF2]/20 hover:text-white transition">Contact</NavLink>
+              </div>
+            </div>
+            <div className="p-4 border-t border-[#1D6FF2]/30">
+              <button onClick={() => { setMobileOpen(false); onOpenCart(); }} className="w-full flex items-center justify-center gap-2 bg-[#1D6FF2] text-white py-3 rounded-full font-semibold hover:bg-[#1558d6] transition">
+                <ShoppingCart className="h-5 w-5" />
+                Panier ({itemCount})
+              </button>
+            </div>
+          </aside>
+        </div>
+      )}
 
       {/* TOP BAR */}
       <div className="bg-[#F8F9FA] border-b border-gray-200 py-2 px-8 shadow-sm relative z-50">
