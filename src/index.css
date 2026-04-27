@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-body text-ink bg-surface antialiased;
+}
+
+@keyframes brand-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-brand-scroll {
+  animation: brand-scroll 28s linear infinite;
+}
+
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.8;
+  }
+  33% {
+    transform: translateY(-20px) scale(1.05);
+    opacity: 1;
+  }
+  66% {
+    transform: translateY(12px) scale(0.97);
+    opacity: 0.75;
+  }
+}
+
+@keyframes cardFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate(-50%, 0) scale(1.2);
+    opacity: 0.35;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blue-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(6, 182, 212, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.8), 0 0 50px rgba(6, 182, 212, 0.4);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-fadeIn-delay-1 {
+  animation: fadeIn 0.5s ease-out 0.05s forwards;
+  opacity: 0;
+}
+.animate-fadeIn-delay-2 {
+  animation: fadeIn 0.5s ease-out 0.1s forwards;
+  opacity: 0;
+}
+.animate-fadeIn-delay-3 {
+  animation: fadeIn 0.5s ease-out 0.15s forwards;
+  opacity: 0;
+}
+.animate-fadeIn-delay-4 {
+  animation: fadeIn 0.5s ease-out 0.2s forwards;
+  opacity: 0;
+}
+.animate-fadeIn-delay-5 {
+  animation: fadeIn 0.5s ease-out 0.25s forwards;
+  opacity: 0;
+}
+
+.animate-blue-glow {
+  animation: blue-glow 3s infinite ease-in-out;
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-md border border-white/10;
+}
+
+/* Splash Screen Animations */
+@keyframes progress-fill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #3b82f6; }
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.5; }
+  100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+}
+
+@keyframes splash-fade-out {
+  0% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+.animate-progress-fill {
+  animation: progress-fill 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-typing {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid transparent; /* default transparent to hide when done */
+  animation: 
+    typing 1.5s steps(30, end) 0.5s both,
+    blink-caret 0.5s step-end infinite;
+}
+
+.animate-particle {
+  animation: particle-float 3s linear infinite;
+}
