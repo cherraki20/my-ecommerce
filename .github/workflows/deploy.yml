@@ -18,10 +18,10 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
-        run: npm run build
+        run: npx vite build
         env:
           VITE_API_URL: http://localhost:5050
 
